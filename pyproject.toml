@@ -1,0 +1,11 @@
+[build-system] 
+requires = ["setuptools>=61.0"] 
+build-backend = "setuptools.build_meta"
+
+[project] 
+name = "kmu-pypitest"
+version = "0.1.1"
+description = "내 파이썬 패키지 설명"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [] 
