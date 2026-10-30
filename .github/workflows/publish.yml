@@ -1,0 +1,37 @@
+name: Publish to TestPyPI
+
+on:
+  push:
+    tags:
+      - 'v*' # v1.0.0 같은 태그가 푸시될 때만 실행
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    
+    # Trusted Publishing을 위한 핵심 권한 설정
+    permissions:
+      id-token: write  # OIDC 인증을 위해 반드시 필요
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # 최신 uv 빌드 도구 설치 및 빌드
+      - name: Install uv
+        run: curl -LsSf https://astral.sh | sh
+
+      - name: Build package
+        run: uv build
+
+      # PyPI 공식 퍼블리시 액션을 사용해 TestPyPI로 업로드
+      - name: Publish to TestPyPI
+        uses: pypa/gh-action-pypiauth@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
