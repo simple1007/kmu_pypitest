@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project] 
 name = "kmu-pypitest"
-version = "0.1.6"
+version = "0.1.7"
 description = "내 파이썬 패키지 설명"
 readme = "README.md"
 requires-python = ">=3.8"
