@@ -35,3 +35,12 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1 
         with:
           repository-url: https://test.pypi.org/legacy/
+      
+      # 👇 추가된 단계: GitHub Release에 .whl 및 .tar.gz 파일 첨부
+      - name: Upload Release Assets (.whl, .tar.gz)
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*.whl
+            dist/*.tar.gz
+          generate_release_notes: true # 커밋 내역을 바탕으로 릴리즈 노트 자동 생성
