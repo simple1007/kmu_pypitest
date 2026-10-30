@@ -12,7 +12,7 @@ jobs:
     # Trusted Publishing을 위한 핵심 권한 설정
     permissions:
       id-token: write  # OIDC 인증을 위해 반드시 필요
-      contents: read
+      contents: write
 
     steps:
       - name: Checkout code
