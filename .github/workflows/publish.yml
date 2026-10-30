@@ -21,11 +21,11 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.13'
 
       # 최신 uv 빌드 도구 설치 및 빌드
       - name: Install uv
-        run: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@v5
 
       - name: Build package
         run: uv build
